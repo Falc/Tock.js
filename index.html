@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Tock.js by Falc</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Tock.js</h1>
+        <h2>A nice Javascript count-up/countdown timer.</h2>
+        <a href="https://github.com/Falc/Tock.js" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="tockjs" class="anchor" href="#tockjs"><span class="octicon octicon-link"></span></a>Tock.js</h1>
+
+<p>A nice Javascript count-up/countdown timer.</p>
+
+<p>Based on <a href="https://github.com/mrchimp/Tock">Tock</a> by Mr Chimp and <a href="http://www.sitepoint.com/creating-accurate-timers-in-javascript/">an idea by James Edwards</a>.</p>
+
+<p>License: <a href="https://github.com/Falc/Tock.js/blob/master/LICENSE">MIT</a></p>
+
+<h2>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Pure Javascript, no dependencies.</li>
+<li>Self-correcting time based on the system clock.</li>
+<li>Count-up/countdown.</li>
+<li>Custom intervals and starting times.</li>
+<li>Start, stop, resume and reset.</li>
+<li>Callback functions on every tick and when a countdown reaches zero.</li>
+</ul><h2>
+<a name="the-problem-with-setintervalsettimeout" class="anchor" href="#the-problem-with-setintervalsettimeout"><span class="octicon octicon-link"></span></a>The problem with setInterval/setTimeout</h2>
+
+<p>Javascript's iteration timers using <code>setInterval()</code> or <code>setTimeout()</code> are not realiable enough. They create a difference between the iterated time and the real time.
+That difference can be compensated by using the actual time to adjust the timer.</p>
+
+<p>These examples made by James Edwards illustrates the differences: <a href="http://www.sitepoint.com/examples/timeradjust/examples.html">http://www.sitepoint.com/examples/timeradjust/examples.html</a></p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p><strong>Tock.js</strong> is not a full widget for a website, it is a timer library. You can use it either to display the result on screen or to make things work in the backend.</p>
+
+<p>Let's see an example:</p>
+
+<h3>
+<a name="1-some-html" class="anchor" href="#1-some-html"><span class="octicon octicon-link"></span></a>1) Some HTML</h3>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;span</span> <span class="na">id=</span><span class="s">"time"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"start"</span><span class="nt">&gt;</span>Start<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"stop"</span><span class="nt">&gt;</span>Stop<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"reset"</span><span class="nt">&gt;</span>Reset<span class="nt">&lt;/button&gt;</span>
+</pre></div>
+
+<h3>
+<a name="2-tock-instance" class="anchor" href="#2-tock-instance"><span class="octicon octicon-link"></span></a>2) Tock instance</h3>
+
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">timer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tock</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+</pre></div>
+
+<p>The <code>options</code> parameter allows to customize the timer easily. All of them are optional, of course.</p>
+
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">countdown</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">start_time</span><span class="o">:</span> <span class="mi">10000</span>
+    <span class="nx">interval</span><span class="o">:</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="nx">on_tick</span><span class="o">:</span> <span class="nx">onTickFunction</span><span class="p">,</span>
+    <span class="nx">on_complete</span><span class="o">:</span> <span class="nx">onCompleteFunction</span>
+<span class="p">}</span>
+</pre></div>
+
+<h4>
+<a name="options" class="anchor" href="#options"><span class="octicon octicon-link"></span></a>Options</h4>
+
+<ul>
+<li>
+<strong>countdown</strong>: <em>boolean</em>
+
+<ul>
+<li>If true, the timer will count down. Otherwise, it will count up.</li>
+<li>Default: false.</li>
+</ul>
+</li>
+<li>
+<strong>start_time</strong>: <em>integer</em>
+
+<ul>
+<li>The starting time in milliseconds. This should be set to a number greater than 0 when <code>countdown</code> is true.</li>
+<li>Default: 0.</li>
+</ul>
+</li>
+<li>
+<strong>interval</strong>: <em>integer</em>
+
+<ul>
+<li>The interval in milliseconds. This defines how often the timer will tick.</li>
+<li>Default: 0.</li>
+</ul>
+</li>
+<li>
+<strong>on_tick</strong>: <em>function</em>
+
+<ul>
+<li>A callback function that will be called on every tick.</li>
+<li>Default: A mockup function that will suggest to set a real one.</li>
+</ul>
+</li>
+<li>
+<strong>on_complete</strong>: <em>function</em>
+
+<ul>
+<li>A callback function that will be called when a countdown reaches zero.</li>
+<li>Default: A mockup function that will suggest to set a real one.</li>
+</ul>
+</li>
+</ul><h4>
+<a name="methods" class="anchor" href="#methods"><span class="octicon octicon-link"></span></a>Methods</h4>
+
+<ul>
+<li>
+<strong>start()</strong>
+
+<ul>
+<li>Starts the timer.</li>
+</ul>
+</li>
+<li>
+<strong>stop()</strong>
+
+<ul>
+<li>Stops the timer. It is possible to resume the timer calling <code>start()</code> again.</li>
+</ul>
+</li>
+<li>
+<strong>reset()</strong>
+
+<ul>
+<li>Resets the timer to <code>start_time</code>.</li>
+</ul>
+</li>
+<li>
+<strong>lap(format)</strong>
+
+<ul>
+<li>Gets the current time in milliseconds.</li>
+<li>The <code>format</code> parameter is optional, it is passed to the <code>format()</code> method.</li>
+</ul>
+</li>
+<li>
+<strong>format(time, format)</strong>
+
+<ul>
+<li>Returns a <code>time</code> (milliseconds) in the specified <code>format</code>. (See the <a href="#time-format">Time Format</a> section)</li>
+</ul>
+</li>
+</ul><h4>
+<a name="callback-functions-on_tick-and-on_complete" class="anchor" href="#callback-functions-on_tick-and-on_complete"><span class="octicon octicon-link"></span></a>Callback functions: on_tick() and on_complete()</h4>
+
+<p>On every tick (every <code>interval</code> milliseconds), <code>on_tick()</code> will be called.</p>
+
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">// some options...</span>
+    <span class="nx">on_tick</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">'#time'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="nx">timer</span><span class="p">.</span><span class="nx">lap</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>When a countdown timer reaches zero, <code>on_complete()</code> will be called.</p>
+
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">// some options...</span>
+    <span class="nx">on_complete</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s2">"Countdown complete!"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3>
+<a name="3-add-some-controls" class="anchor" href="#3-add-some-controls"><span class="octicon octicon-link"></span></a>3) Add some controls</h3>
+
+<p>The timer can be controlled easily with some buttons and events.</p>
+
+<p>Start button:</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#start'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">timer</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+
+<p>Stop button:</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#stop'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">timer</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+
+<p>Reset button:</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#start'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">timer</span><span class="p">.</span><span class="nx">reset</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+
+<p>It is possible to set a "lap" button too:</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#lap'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'#time'</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s1">'&lt;br /&gt;'</span> <span class="o">+</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">lap</span><span class="p">());</span>
+<span class="p">});</span>
+</pre></div>
+
+<h2>
+<a name="time-format" class="anchor" href="#time-format"><span class="octicon octicon-link"></span></a>Time Format</h2>
+
+<p>The <code>format(time, format)</code> method allows to customize the <code>format</code> of the given <code>time</code> (passed as milliseconds). It will replace the placeholders found in the <code>format</code> parameter, with the corresponding time information:</p>
+
+<ul>
+<li>
+<strong>{H}</strong>: Hours</li>
+<li>
+<strong>{h}</strong>: Hours (same as <code>{H}</code>)</li>
+<li>
+<strong>{M}</strong>: Minutes</li>
+<li>
+<strong>{m}</strong>: Minutes (0 - 59)</li>
+<li>
+<strong>{S}</strong>: Seconds</li>
+<li>
+<strong>{s}</strong>: Seconds (0 - 59)</li>
+<li>
+<strong>{L}</strong>: Milliseconds (Default)</li>
+<li>
+<strong>{l}</strong>: Milliseconds (0 - 999)</li>
+</ul><p>Capital letters are raw values. This means that <code>{M}</code> displays the full number of minutes (i.e. 127 minutes), but <code>{m}</code> displays only the number of minutes elapsed since the last hour (7 in 127).</p>
+
+<p>Double letters are used to retrieve the time with leading zeros. If <code>{m}</code> returns <strong>7</strong>, <code>{mm}</code> will return <strong>07</strong>.</p>
+
+<p>Examples:</p>
+
+<div class="highlight highlight-php"><pre>    <span class="nx">Time</span><span class="o">:</span> <span class="mi">3877012</span> <span class="p">(</span><span class="mi">1</span> <span class="nx">hour</span><span class="p">,</span> <span class="mi">4</span> <span class="nx">minutes</span><span class="p">,</span> <span class="mi">37</span> <span class="nx">seconds</span> <span class="k">and</span> <span class="mi">12</span> <span class="nx">milliseconds</span><span class="p">)</span>
+    <span class="s1">'{hh}:{mm}:{ss}.{ll}'</span>        <span class="c1">// 01:04:37.012</span>
+    <span class="s1">'{MM}'</span>                       <span class="c1">// 64</span>
+    <span class="s1">'{SS}.{ll}'</span>                  <span class="c1">// 3877.012</span>
+    <span class="s1">'{MM} min and {ss} s'</span>        <span class="c1">// 64 min and 37 s</span>
+    <span class="s1">'{h}:{m} vs {hh}:{mm}'</span>       <span class="c1">// 1:4 vs 01:04</span>
+</pre></div>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/Falc/Tock.js/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/Falc/Tock.js/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/Falc/Tock.js"></a> is maintained by <a href="https://github.com/Falc">Falc</a>.</p>
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
