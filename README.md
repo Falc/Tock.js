@@ -91,6 +91,10 @@ On every tick (every `interval` milliseconds), `on_tick()` will be called.
 var options = {
     // some options...
     on_tick: function() {
+        // Pure javascript
+        document.querySelector('#time').innerHTML = timer.lap();
+
+        // Using jQuery/Zepto
         $('#time').text(timer.lap());
     }
 }
@@ -112,6 +116,12 @@ The timer can be controlled easily with some buttons and events.
 
 Start button:
 ```js
+// Pure Javascript
+document.querySelector('#start').onclick = function() {
+    timer.start();
+});
+
+// Using jQuery/Zepto
 $('#start').on('click', function() {
     timer.start();
 });
@@ -119,6 +129,12 @@ $('#start').on('click', function() {
 
 Stop button:
 ```js
+// Pure Javascript
+document.querySelector('#stop').onclick = function() {
+    timer.stop();
+});
+
+// Using jQuery/Zepto
 $('#stop').on('click', function() {
     timer.stop();
 });
@@ -126,13 +142,26 @@ $('#stop').on('click', function() {
 
 Reset button:
 ```js
-$('#start').on('click', function() {
+// Pure Javascript
+document.querySelector('#reset').onclick = function() {
+    timer.reset();
+});
+
+// Using jQuery/Zepto
+$('#reset').on('click', function() {
     timer.reset();
 });
 ```
 
 It is possible to set a "lap" button too:
 ```js
+// Pure Javascript
+document.querySelector('#lap').onclick = function() {
+    document.querySelector('#time').innerHTML += '<br />' + timer.lap();
+    timer.reset();
+});
+
+// Using jQuery/Zepto
 $('#lap').on('click', function() {
     $('#time').append('<br />' + timer.lap());
 });
