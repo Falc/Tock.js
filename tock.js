@@ -44,7 +44,7 @@ Tock.prototype = {
         }
 
         // A countdown that has finished should be reseted before starting again
-        if (this.countdown === true && (this.stopped_time - this.time < 0)) {
+        if (this.countdown === true && this.stopped_time <= 0) {
             return;
         }
 
@@ -115,6 +115,7 @@ Tock.prototype = {
         }
 
         if (this.countdown === true && (this.stopped_time - this.time < 0)) {
+            this.stopped_time = 0;
             this.is_running = false;
             this.on_complete();
         }
