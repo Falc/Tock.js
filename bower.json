@@ -1,0 +1,26 @@
+{
+  "name": "tock-js",
+  "description": "A nice and accurate count-up/countdown timer.",
+  "version": "1.2.0",
+  "homepage": "https://github.com/Falc/Tock.js",
+  "authors": [
+    { "name": "Aitor García", "email": "aitor.falc@gmail.com", "homepage": "http://aitorgarcia.org" }
+  ],
+  "license": "MIT",
+  "main": [
+    "tock.js"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "timer",
+    "time",
+    "countdown",
+    "clock"
+  ],
+  "ignore": [
+    "/.*",
+    "examples"
+  ]
+}
