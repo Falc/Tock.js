@@ -89,6 +89,8 @@ Tock.prototype = {
         this.started_at = 0;
         this.time = 0;
         this.elapsed = '0.0';
+
+        this.on_tick();
     },
 
     /**
@@ -177,7 +179,7 @@ Tock.prototype = {
      * {M}: Minutes
      * {m}: Minutes (0 - 59)
      * {S}: Seconds
-     * {s}: Seconds (0 - 59) 
+     * {s}: Seconds (0 - 59)
      * {L}: Milliseconds (Default)
      * {l}: Milliseconds (0 - 999)
      *
