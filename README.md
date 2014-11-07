@@ -1,6 +1,6 @@
 # Tock.js
 
-A nice Javascript count-up/countdown timer.
+A nice and accurate Javascript count-up/countdown timer.
 
 Based on [Tock](https://github.com/mrchimp/Tock) by Mr Chimp and [an idea by James Edwards](http://www.sitepoint.com/creating-accurate-timers-in-javascript/).
 

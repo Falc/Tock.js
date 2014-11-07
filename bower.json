@@ -1,6 +1,6 @@
 {
   "name": "tock-js",
-  "description": "A nice and accurate count-up/countdown timer.",
+  "description": "A nice and accurate Javascript count-up/countdown timer.",
   "version": "1.2.0",
   "homepage": "https://github.com/Falc/Tock.js",
   "authors": [

@@ -1,7 +1,7 @@
 /**
  * Tock.js
  *
- * A nice Javascript count-up/countdown timer.
+ * A nice and accurate Javascript count-up/countdown timer.
  *
  * Based on:
  * - Tock by Mr Chimp: https://github.com/mrchimp/Tock
