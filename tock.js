@@ -130,14 +130,15 @@ Tock.prototype = {
       if (this.is_running) {
         this.tick();
       }
+
+      return;
     }
-    else {
-      if (this.is_running) {
-        this.timeout = window.setTimeout(
-          function() {me.tick();},
-          next_interval_in
-        );
-      }
+
+    if (this.is_running) {
+      this.timeout = window.setTimeout(
+        function() {me.tick();},
+        next_interval_in
+      );
     }
   },
 
@@ -153,19 +154,17 @@ Tock.prototype = {
 
       return this.format(this.stopped_time, format);
     }
-    else {
-      if (this.is_countdown) {
-        var lap_time = this.stopped_time - (Date.now() - this.started_at);
-        if (lap_time < 0) {
-          lap_time = 0;
-        }
 
-        return this.format(lap_time, format);
+    if (this.is_countdown) {
+      var lap_time = this.stopped_time - (Date.now() - this.started_at);
+      if (lap_time < 0) {
+        lap_time = 0;
       }
-      else {
-        return this.format(this.stopped_time + (Date.now() - this.started_at), format);
-      }
+
+      return this.format(lap_time, format);
     }
+
+    return this.format(this.stopped_time + (Date.now() - this.started_at), format);
   },
 
   /**
