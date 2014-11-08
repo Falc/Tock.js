@@ -76,7 +76,9 @@ Tock.prototype = {
 
     window.clearTimeout(this.timeout);
 
-    this.on_tick();
+    if (typeof this.on_tick === 'function') {
+      this.on_tick();
+    }
   },
 
   /**
@@ -92,7 +94,9 @@ Tock.prototype = {
     this.time = 0;
     this.elapsed = '0.0';
 
-    this.on_tick();
+    if (typeof this.on_tick === 'function') {
+      this.on_tick();
+    }
   },
 
   /**
@@ -122,7 +126,10 @@ Tock.prototype = {
     if (this.is_countdown && (this.stopped_time - this.time < 0)) {
       this.stopped_time = 0;
       this.is_running = false;
-      this.on_complete();
+
+      if (typeof this.on_complete === 'function') {
+        this.on_complete();
+      }
     }
 
     if (next_interval_in <= 0) {
