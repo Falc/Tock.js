@@ -75,6 +75,8 @@ Tock.prototype = {
     this.is_running = false;
 
     window.clearTimeout(this.timeout);
+
+    this.on_tick();
   },
 
   /**
