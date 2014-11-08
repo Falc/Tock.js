@@ -44,11 +44,11 @@ var timer = new Tock(options);
 The `options` parameter allows to customize the timer easily. All of them are optional, of course.
 ```js
 var options = {
-    countdown: true,
-    start_time: 10000
-    interval: 15,
-    on_tick: onTickFunction,
-    on_complete: onCompleteFunction
+  countdown: true,
+  start_time: 10000
+  interval: 15,
+  on_tick: function() {/* Some code... */},
+  on_complete: function() {/* Some code... */}
 }
 ```
 
@@ -89,24 +89,24 @@ var options = {
 On every tick (every `interval` milliseconds), `on_tick()` will be called.
 ```js
 var options = {
-    // some options...
-    on_tick: function() {
-        // Pure javascript
-        document.querySelector('#time').innerHTML = timer.lap();
+  // some options...
+  on_tick: function() {
+    // Pure javascript
+    document.querySelector('#time').innerHTML = timer.lap();
 
-        // Using jQuery/Zepto
-        $('#time').text(timer.lap());
-    }
+    // Using jQuery/Zepto
+    $('#time').text(timer.lap());
+  }
 }
 ```
 
 When a countdown timer reaches zero, `on_complete()` will be called.
 ```js
 var options = {
-    // some options...
-    on_complete: function() {
-        alert("Countdown complete!");
-    }
+  // some options...
+  on_complete: function() {
+    alert("Countdown complete!");
+  }
 }
 ```
 
@@ -118,12 +118,12 @@ Start button:
 ```js
 // Pure Javascript
 document.querySelector('#start').onclick = function() {
-    timer.start();
+  timer.start();
 });
 
 // Using jQuery/Zepto
 $('#start').on('click', function() {
-    timer.start();
+  timer.start();
 });
 ```
 
@@ -131,12 +131,12 @@ Stop button:
 ```js
 // Pure Javascript
 document.querySelector('#stop').onclick = function() {
-    timer.stop();
+  timer.stop();
 });
 
 // Using jQuery/Zepto
 $('#stop').on('click', function() {
-    timer.stop();
+  timer.stop();
 });
 ```
 
@@ -144,12 +144,12 @@ Reset button:
 ```js
 // Pure Javascript
 document.querySelector('#reset').onclick = function() {
-    timer.reset();
+  timer.reset();
 });
 
 // Using jQuery/Zepto
 $('#reset').on('click', function() {
-    timer.reset();
+  timer.reset();
 });
 ```
 
@@ -157,13 +157,12 @@ It is possible to set a "lap" button too:
 ```js
 // Pure Javascript
 document.querySelector('#lap').onclick = function() {
-    document.querySelector('#time').innerHTML += '<br />' + timer.lap();
-    timer.reset();
+  document.querySelector('#time').innerHTML += '<br />' + timer.lap();
 });
 
 // Using jQuery/Zepto
 $('#lap').on('click', function() {
-    $('#time').append('<br />' + timer.lap());
+  $('#time').append('<br />' + timer.lap());
 });
 ```
 

@@ -23,22 +23,22 @@
             </div>
             <textarea wrap="off" readonly="readonly">
 var timer1 = new Tock({
-    on_tick: function() {
-        $('#timer1 .field1').text(timer1.lap());
-        $('#timer1 .field2').text(timer1.lap('{S}.{ll}'));
-    }
+  on_tick: function() {
+    $('#timer1 .field1').text(timer1.lap());
+    $('#timer1 .field2').text(timer1.lap('{S}.{ll}'));
+  }
 });
 
 $('#timer1 .btn-start').on('click', function() {
-    timer1.start();
+  timer1.start();
 });
 
 $('#timer1 .btn-stop').on('click', function() {
-    timer1.stop();
+  timer1.stop();
 });
 
 $('#timer1 .btn-reset').on('click', function() {
-    timer1.reset();
+  timer1.reset();
 });</textarea>
         </div>
 
@@ -57,23 +57,23 @@ $('#timer1 .btn-reset').on('click', function() {
             </div>
             <textarea wrap="off" readonly="readonly">
 var timer2 = new Tock({
-    interval: 1000,
-    on_tick: function() {
-        $('#timer2 .field1').text(timer2.lap());
-        $('#timer2 .field2').text(timer2.lap('{S}'));
-    }
+  interval: 1000,
+  on_tick: function() {
+    $('#timer2 .field1').text(timer2.lap());
+    $('#timer2 .field2').text(timer2.lap('{S}'));
+  }
 });
 
 $('#timer2 .btn-start').on('click', function() {
-    timer2.start();
+  timer2.start();
 });
 
 $('#timer2 .btn-stop').on('click', function() {
-    timer2.stop();
+  timer2.stop();
 });
 
 $('#timer2 .btn-reset').on('click', function() {
-    timer2.reset();
+  timer2.reset();
 });</textarea>
         </div>
 
@@ -92,23 +92,23 @@ $('#timer2 .btn-reset').on('click', function() {
             </div>
             <textarea wrap="off" readonly="readonly">
 var timer3 = new Tock({
-    start_time: 15000,
-    on_tick: function() {
-        $('#timer3 .field1').text(timer3.lap());
-        $('#timer3 .field2').text(timer3.lap('{S}.{ll}'));
-    }
+  start_time: 15000,
+  on_tick: function() {
+    $('#timer3 .field1').text(timer3.lap());
+    $('#timer3 .field2').text(timer3.lap('{S}.{ll}'));
+  }
 });
 
 $('#timer3 .btn-start').on('click', function() {
-    timer3.start();
+  timer3.start();
 });
 
 $('#timer3 .btn-stop').on('click', function() {
-    timer3.stop();
+  timer3.stop();
 });
 
 $('#timer3 .btn-reset').on('click', function() {
-    timer3.reset();
+  timer3.reset();
 });</textarea>
         </div>
 
@@ -127,24 +127,24 @@ $('#timer3 .btn-reset').on('click', function() {
             </div>
             <textarea wrap="off" readonly="readonly">
 var timer4 = new Tock({
-    start_time: 2138,
-    interval: 123,
-    on_tick: function() {
-        $('#timer4 .field1').text(timer4.lap());
-        $('#timer4 .field2').text(timer4.lap('{S}.{ll}'));
-    }
+  start_time: 2138,
+  interval: 123,
+  on_tick: function() {
+    $('#timer4 .field1').text(timer4.lap());
+    $('#timer4 .field2').text(timer4.lap('{S}.{ll}'));
+  }
 });
 
 $('#timer4 .btn-start').on('click', function() {
-    timer4.start();
+  timer4.start();
 });
 
 $('#timer4 .btn-stop').on('click', function() {
-    timer4.stop();
+  timer4.stop();
 });
 
 $('#timer4 .btn-reset').on('click', function() {
-    timer4.reset();
+  timer4.reset();
 });</textarea>
         </div>
 
@@ -164,27 +164,27 @@ $('#timer4 .btn-reset').on('click', function() {
             </div>
             <textarea wrap="off" readonly="readonly">
 var countdown1 = new Tock({
-    countdown: true,
-    start_time: 10000,
-    on_tick: function() {
-        $('#countdown1 .field1').text(countdown1.lap());
-        $('#countdown1 .field2').text(countdown1.lap('{S}.{ll}'));
-    },
-    on_complete: function() {
-        console.log("Countdown 1 complete!");
-    }
+  countdown: true,
+  start_time: 10000,
+  on_tick: function() {
+    $('#countdown1 .field1').text(countdown1.lap());
+    $('#countdown1 .field2').text(countdown1.lap('{S}.{ll}'));
+  },
+  on_complete: function() {
+    console.log("Countdown 1 complete!");
+  }
 });
 
 $('#countdown1 .btn-start').on('click', function() {
-    countdown1.start();
+  countdown1.start();
 });
 
 $('#countdown1 .btn-stop').on('click', function() {
-    countdown1.stop();
+  countdown1.stop();
 });
 
 $('#countdown1 .btn-reset').on('click', function() {
-    countdown1.reset();
+  countdown1.reset();
 });</textarea>
         </div>
 
@@ -203,28 +203,28 @@ $('#countdown1 .btn-reset').on('click', function() {
             </div>
             <textarea wrap="off" readonly="readonly">
 var countdown2 = new Tock({
-    countdown: true,
-    start_time: 10000,
-    interval: 123,
-    on_tick: function() {
-        $('#countdown2 .field1').text(countdown2.lap());
-        $('#countdown2 .field2').text(countdown2.lap('{S}'));
-    },
-    on_complete: function() {
-        console.log("Countdown 2 complete!");
-    }
+  countdown: true,
+  start_time: 10000,
+  interval: 123,
+  on_tick: function() {
+    $('#countdown2 .field1').text(countdown2.lap());
+    $('#countdown2 .field2').text(countdown2.lap('{S}'));
+  },
+  on_complete: function() {
+    console.log("Countdown 2 complete!");
+  }
 });
 
 $('#countdown2 .btn-start').on('click', function() {
-    countdown2.start();
+  countdown2.start();
 });
 
 $('#countdown2 .btn-stop').on('click', function() {
-    countdown2.stop();
+  countdown2.stop();
 });
 
 $('#countdown2 .btn-reset').on('click', function() {
-    countdown2.reset();
+  countdown2.reset();
 });</textarea>
 
         </div>
@@ -239,176 +239,176 @@ $('#countdown2 .btn-reset').on('click', function() {
 
         <!-- This is the best part -->
         <script>
-            $(document).ready(function() {
-                /*
-                 * Timer 1
-                 */
-                var timer1 = new Tock({
-                    on_tick: function() {
-                        $('#timer1 .field1').text(timer1.lap());
-                        $('#timer1 .field2').text(timer1.lap('{S}.{ll}'));
-                    }
-                });
+        $(document).ready(function() {
+          /*
+           * Timer 1
+           */
+          var timer1 = new Tock({
+            on_tick: function() {
+              $('#timer1 .field1').text(timer1.lap());
+              $('#timer1 .field2').text(timer1.lap('{S}.{ll}'));
+            }
+          });
 
-                // Buttons for timer 1
-                $('#timer1 .btn-start').on('click', function() {
-                    timer1.start();
-                });
+          // Buttons for timer 1
+          $('#timer1 .btn-start').on('click', function() {
+            timer1.start();
+          });
 
-                $('#timer1 .btn-stop').on('click', function() {
-                    timer1.stop();
-                });
+          $('#timer1 .btn-stop').on('click', function() {
+            timer1.stop();
+          });
 
-                $('#timer1 .btn-reset').on('click', function() {
-                    timer1.reset();
-                });
+          $('#timer1 .btn-reset').on('click', function() {
+            timer1.reset();
+          });
 
-                /*
-                 * Timer 2
-                 */
-                var timer2 = new Tock({
-                    interval: 1000,
-                    on_tick: function() {
-                        $('#timer2 .field1').text(timer2.lap());
-                        $('#timer2 .field2').text(timer2.lap('{S}'));
-                    }
-                });
+          /*
+           * Timer 2
+           */
+          var timer2 = new Tock({
+            interval: 1000,
+            on_tick: function() {
+              $('#timer2 .field1').text(timer2.lap());
+              $('#timer2 .field2').text(timer2.lap('{S}'));
+            }
+          });
 
-                // Buttons for timer 2
-                $('#timer2 .btn-start').on('click', function() {
-                    timer2.start();
-                });
+          // Buttons for timer 2
+          $('#timer2 .btn-start').on('click', function() {
+            timer2.start();
+          });
 
-                $('#timer2 .btn-stop').on('click', function() {
-                    timer2.stop();
-                });
+          $('#timer2 .btn-stop').on('click', function() {
+            timer2.stop();
+          });
 
-                $('#timer2 .btn-reset').on('click', function() {
-                    timer2.reset();
-                });
+          $('#timer2 .btn-reset').on('click', function() {
+            timer2.reset();
+          });
 
-                /*
-                 * Timer 3
-                 */
-                var timer3 = new Tock({
-                    start_time: 15000,
-                    on_tick: function() {
-                        $('#timer3 .field1').text(timer3.lap());
-                        $('#timer3 .field2').text(timer3.lap('{S}.{ll}'));
-                    }
-                });
+          /*
+           * Timer 3
+           */
+          var timer3 = new Tock({
+            start_time: 15000,
+            on_tick: function() {
+              $('#timer3 .field1').text(timer3.lap());
+              $('#timer3 .field2').text(timer3.lap('{S}.{ll}'));
+            }
+          });
 
-                // Buttons for timer 3
-                $('#timer3 .btn-start').on('click', function() {
-                    timer3.start();
-                });
+          // Buttons for timer 3
+          $('#timer3 .btn-start').on('click', function() {
+            timer3.start();
+          });
 
-                $('#timer3 .btn-stop').on('click', function() {
-                    timer3.stop();
-                });
+          $('#timer3 .btn-stop').on('click', function() {
+            timer3.stop();
+          });
 
-                $('#timer3 .btn-reset').on('click', function() {
-                    timer3.reset();
-                });
+          $('#timer3 .btn-reset').on('click', function() {
+            timer3.reset();
+          });
 
-                /*
-                 * Timer 4
-                 */
-                var timer4 = new Tock({
-                    start_time: 2138,
-                    interval: 123,
-                    on_tick: function() {
-                        $('#timer4 .field1').text(timer4.lap());
-                        $('#timer4 .field2').text(timer4.lap('{S}.{ll}'));
-                    }
-                });
+          /*
+           * Timer 4
+           */
+          var timer4 = new Tock({
+            start_time: 2138,
+            interval: 123,
+            on_tick: function() {
+              $('#timer4 .field1').text(timer4.lap());
+              $('#timer4 .field2').text(timer4.lap('{S}.{ll}'));
+            }
+          });
 
-                // Buttons for timer 4
-                $('#timer4 .btn-start').on('click', function() {
-                    timer4.start();
-                });
+          // Buttons for timer 4
+          $('#timer4 .btn-start').on('click', function() {
+            timer4.start();
+          });
 
-                $('#timer4 .btn-stop').on('click', function() {
-                    timer4.stop();
-                });
+          $('#timer4 .btn-stop').on('click', function() {
+            timer4.stop();
+          });
 
-                $('#timer4 .btn-reset').on('click', function() {
-                    timer4.reset();
-                });
+          $('#timer4 .btn-reset').on('click', function() {
+            timer4.reset();
+          });
 
-                /*
-                 * Countdown 1
-                 */
-                var countdown1 = new Tock({
-                    countdown: true,
-                    start_time: 10000,
-                    on_tick: function() {
-                        $('#countdown1 .field1').text(countdown1.lap());
-                        $('#countdown1 .field2').text(countdown1.lap('{S}.{ll}'));
-                    },
-                    on_complete: function() {
-                        console.log("Countdown 1 complete!");
-                    }
-                });
+          /*
+           * Countdown 1
+           */
+          var countdown1 = new Tock({
+            countdown: true,
+            start_time: 10000,
+            on_tick: function() {
+              $('#countdown1 .field1').text(countdown1.lap());
+              $('#countdown1 .field2').text(countdown1.lap('{S}.{ll}'));
+            },
+            on_complete: function() {
+              console.log("Countdown 1 complete!");
+            }
+          });
 
-                // Buttons for countdown 1
-                $('#countdown1 .btn-start').on('click', function() {
-                    countdown1.start();
-                });
+          // Buttons for countdown 1
+          $('#countdown1 .btn-start').on('click', function() {
+            countdown1.start();
+          });
 
-                $('#countdown1 .btn-stop').on('click', function() {
-                    countdown1.stop();
-                });
+          $('#countdown1 .btn-stop').on('click', function() {
+            countdown1.stop();
+          });
 
-                $('#countdown1 .btn-reset').on('click', function() {
-                    countdown1.reset();
-                });
+          $('#countdown1 .btn-reset').on('click', function() {
+            countdown1.reset();
+          });
 
-                /*
-                 * Countdown 2
-                 */
-                var countdown2 = new Tock({
-                    countdown: true,
-                    start_time: 10000,
-                    interval: 123,
-                    on_tick: function() {
-                        $('#countdown2 .field1').text(countdown2.lap());
-                        $('#countdown2 .field2').text(countdown2.lap('{S}'));
-                    },
-                    on_complete: function() {
-                        console.log("Countdown 2 complete!");
-                    }
-                });
+          /*
+           * Countdown 2
+           */
+          var countdown2 = new Tock({
+            countdown: true,
+            start_time: 10000,
+            interval: 123,
+            on_tick: function() {
+              $('#countdown2 .field1').text(countdown2.lap());
+              $('#countdown2 .field2').text(countdown2.lap('{S}'));
+            },
+            on_complete: function() {
+              console.log("Countdown 2 complete!");
+            }
+          });
 
-                // Buttons for countdown 2
-                $('#countdown2 .btn-start').on('click', function() {
-                    countdown2.start();
-                });
+          // Buttons for countdown 2
+          $('#countdown2 .btn-start').on('click', function() {
+            countdown2.start();
+          });
 
-                $('#countdown2 .btn-stop').on('click', function() {
-                    countdown2.stop();
-                });
+          $('#countdown2 .btn-stop').on('click', function() {
+            countdown2.stop();
+          });
 
-                $('#countdown2 .btn-reset').on('click', function() {
-                    countdown2.reset();
-                });
+          $('#countdown2 .btn-reset').on('click', function() {
+            countdown2.reset();
+          });
 
-                /*
-                 * Sets the default times in the fields
-                 */
-                $('#timer1 .field1').text(timer1.lap());
-                $('#timer1 .field2').text(timer1.lap('{S}.{ll}'));
-                $('#timer2 .field1').text(timer2.lap());
-                $('#timer2 .field2').text(timer2.lap('{S}'));
-                $('#timer3 .field1').text(timer3.lap());
-                $('#timer3 .field2').text(timer3.lap('{S}.{ll}'));
-                $('#timer4 .field1').text(timer4.lap());
-                $('#timer4 .field2').text(timer4.lap('{S}.{ll}'));
-                $('#countdown1 .field1').text(countdown1.lap());
-                $('#countdown1 .field2').text(countdown1.lap('{S}.{ll}'));
-                $('#countdown2 .field1').text(countdown2.lap());
-                $('#countdown2 .field2').text(countdown2.lap('{S}'));
-            });
+          /*
+           * Sets the default times in the fields
+           */
+          $('#timer1 .field1').text(timer1.lap());
+          $('#timer1 .field2').text(timer1.lap('{S}.{ll}'));
+          $('#timer2 .field1').text(timer2.lap());
+          $('#timer2 .field2').text(timer2.lap('{S}'));
+          $('#timer3 .field1').text(timer3.lap());
+          $('#timer3 .field2').text(timer3.lap('{S}.{ll}'));
+          $('#timer4 .field1').text(timer4.lap());
+          $('#timer4 .field2').text(timer4.lap('{S}.{ll}'));
+          $('#countdown1 .field1').text(countdown1.lap());
+          $('#countdown1 .field2').text(countdown1.lap('{S}.{ll}'));
+          $('#countdown2 .field1').text(countdown2.lap());
+          $('#countdown2 .field2').text(countdown2.lap('{S}'));
+        });
         </script>
     </body>
 </html>
