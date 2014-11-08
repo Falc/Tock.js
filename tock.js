@@ -15,7 +15,7 @@
  * License: MIT (https://github.com/Falc/Tock.js/blob/master/LICENSE)
  */
 var Tock = function(options) {
-    var options = options || {};
+    options = options || {};
 
     // Default params
     this.countdown = options.countdown || false;
@@ -112,7 +112,7 @@ Tock.prototype = {
 
         var next_interval_in = this.interval - diff;
 
-        if (this.on_tick !== undefined) {
+        if (typeof this.on_tick === "function") {
             this.on_tick();
         }
 
@@ -191,7 +191,7 @@ Tock.prototype = {
      * '{h}:{m} vs {hh}:{mm}'       => 1:4 vs 01:04
      */
     format: function(time, format) {
-        if (format == undefined || format == '{L}') {
+        if (format === undefined || format === '{L}') {
             return time;
         }
 
