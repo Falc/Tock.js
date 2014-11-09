@@ -23,7 +23,7 @@
             </div>
             <textarea wrap="off" readonly="readonly">
 var timer1 = new Tock({
-  on_tick: function() {
+  onTick: function() {
     document.querySelector('#timer1 .field1').innerHTML = timer1.lap();
     document.querySelector('#timer1 .field2').innerHTML = timer1.lap('{S}.{ll}');
   }
@@ -58,7 +58,7 @@ document.querySelector('#timer1 .btn-reset').onclick = function() {
             <textarea wrap="off" readonly="readonly">
 var timer2 = new Tock({
   interval: 1000,
-  on_tick: function() {
+  onTick: function() {
     document.querySelector('#timer2 .field1').innerHTML = timer2.lap();
     document.querySelector('#timer2 .field2').innerHTML = timer2.lap('{S}');
   }
@@ -92,8 +92,8 @@ document.querySelector('#timer2 .btn-reset').onclick = function() {
             </div>
             <textarea wrap="off" readonly="readonly">
 var timer3 = new Tock({
-  start_time: 15000,
-  on_tick: function() {
+  startTime: 15000,
+  onTick: function() {
     document.querySelector('#timer3 .field1').innerHTML = timer3.lap();
     document.querySelector('#timer3 .field2').innerHTML = timer3.lap('{S}.{ll}');
   }
@@ -127,9 +127,9 @@ document.querySelector('#timer3 .btn-reset').onclick = function() {
             </div>
             <textarea wrap="off" readonly="readonly">
 var timer4 = new Tock({
-  start_time: 2138,
+  startTime: 2138,
   interval: 123,
-  on_tick: function() {
+  onTick: function() {
     document.querySelector('#timer4 .field1').innerHTML = timer4.lap();
     document.querySelector('#timer4 .field2').innerHTML = timer4.lap('{S}.{ll}');
   }
@@ -165,12 +165,12 @@ document.querySelector('#timer4 .btn-reset').onclick = function() {
             <textarea wrap="off" readonly="readonly">
 var countdown1 = new Tock({
   countdown: true,
-  start_time: 10000,
-  on_tick: function() {
+  startTime: 10000,
+  onTick: function() {
     document.querySelector('#countdown1 .field1').innerHTML = countdown1.lap();
     document.querySelector('#countdown1 .field2').innerHTML = countdown1.lap('{S}.{ll}');
   },
-  on_complete: function() {
+  onComplete: function() {
     console.log("Countdown 1 complete!");
   }
 });
@@ -204,13 +204,13 @@ document.querySelector('#countdown1 .btn-reset').onclick = function() {
             <textarea wrap="off" readonly="readonly">
 var countdown2 = new Tock({
   countdown: true,
-  start_time: 10000,
+  startTime: 10000,
   interval: 123,
-  on_tick: function() {
+  onTick: function() {
     document.querySelector('#countdown2 .field1').innerHTML = countdown2.lap();
     document.querySelector('#countdown2 .field2').innerHTML = countdown2.lap('{S}');
   },
-  on_complete: function() {
+  onComplete: function() {
     console.log("Countdown 2 complete!");
   }
 });
@@ -239,7 +239,7 @@ document.querySelector('#countdown2 .btn-reset').onclick = function() {
          * Timer 1
          */
         var timer1 = new Tock({
-          on_tick: function() {
+          onTick: function() {
             document.querySelector('#timer1 .field1').innerHTML = timer1.lap();
             document.querySelector('#timer1 .field2').innerHTML = timer1.lap('{S}.{ll}');
           }
@@ -263,7 +263,7 @@ document.querySelector('#countdown2 .btn-reset').onclick = function() {
          */
         var timer2 = new Tock({
           interval: 1000,
-          on_tick: function() {
+          onTick: function() {
             document.querySelector('#timer2 .field1').innerHTML = timer2.lap();
             document.querySelector('#timer2 .field2').innerHTML = timer2.lap('{S}');
           }
@@ -286,8 +286,8 @@ document.querySelector('#countdown2 .btn-reset').onclick = function() {
          * Timer 3
          */
         var timer3 = new Tock({
-          start_time: 15000,
-          on_tick: function() {
+          startTime: 15000,
+          onTick: function() {
             document.querySelector('#timer3 .field1').innerHTML = timer3.lap();
             document.querySelector('#timer3 .field2').innerHTML = timer3.lap('{S}.{ll}');
           }
@@ -310,9 +310,9 @@ document.querySelector('#countdown2 .btn-reset').onclick = function() {
          * Timer 4
          */
         var timer4 = new Tock({
-          start_time: 2138,
+          startTime: 2138,
           interval: 123,
-          on_tick: function() {
+          onTick: function() {
             document.querySelector('#timer4 .field1').innerHTML = timer4.lap();
             document.querySelector('#timer4 .field2').innerHTML = timer4.lap('{S}.{ll}');
           }
@@ -336,12 +336,12 @@ document.querySelector('#countdown2 .btn-reset').onclick = function() {
          */
         var countdown1 = new Tock({
           countdown: true,
-          start_time: 10000,
-          on_tick: function() {
+          startTime: 10000,
+          onTick: function() {
             document.querySelector('#countdown1 .field1').innerHTML = countdown1.lap();
             document.querySelector('#countdown1 .field2').innerHTML = countdown1.lap('{S}.{ll}');
           },
-          on_complete: function() {
+          onComplete: function() {
             console.log("Countdown 1 complete!");
           }
         });
@@ -364,13 +364,13 @@ document.querySelector('#countdown2 .btn-reset').onclick = function() {
          */
         var countdown2 = new Tock({
           countdown: true,
-          start_time: 10000,
+          startTime: 10000,
           interval: 123,
-          on_tick: function() {
+          onTick: function() {
             document.querySelector('#countdown2 .field1').innerHTML = countdown2.lap();
             document.querySelector('#countdown2 .field2').innerHTML = countdown2.lap('{S}');
           },
-          on_complete: function() {
+          onComplete: function() {
             console.log("Countdown 2 complete!");
           }
         });

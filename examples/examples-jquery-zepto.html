@@ -23,7 +23,7 @@
             </div>
             <textarea wrap="off" readonly="readonly">
 var timer1 = new Tock({
-  on_tick: function() {
+  onTick: function() {
     $('#timer1 .field1').text(timer1.lap());
     $('#timer1 .field2').text(timer1.lap('{S}.{ll}'));
   }
@@ -58,7 +58,7 @@ $('#timer1 .btn-reset').on('click', function() {
             <textarea wrap="off" readonly="readonly">
 var timer2 = new Tock({
   interval: 1000,
-  on_tick: function() {
+  onTick: function() {
     $('#timer2 .field1').text(timer2.lap());
     $('#timer2 .field2').text(timer2.lap('{S}'));
   }
@@ -92,8 +92,8 @@ $('#timer2 .btn-reset').on('click', function() {
             </div>
             <textarea wrap="off" readonly="readonly">
 var timer3 = new Tock({
-  start_time: 15000,
-  on_tick: function() {
+  startTime: 15000,
+  onTick: function() {
     $('#timer3 .field1').text(timer3.lap());
     $('#timer3 .field2').text(timer3.lap('{S}.{ll}'));
   }
@@ -127,9 +127,9 @@ $('#timer3 .btn-reset').on('click', function() {
             </div>
             <textarea wrap="off" readonly="readonly">
 var timer4 = new Tock({
-  start_time: 2138,
+  startTime: 2138,
   interval: 123,
-  on_tick: function() {
+  onTick: function() {
     $('#timer4 .field1').text(timer4.lap());
     $('#timer4 .field2').text(timer4.lap('{S}.{ll}'));
   }
@@ -165,12 +165,12 @@ $('#timer4 .btn-reset').on('click', function() {
             <textarea wrap="off" readonly="readonly">
 var countdown1 = new Tock({
   countdown: true,
-  start_time: 10000,
-  on_tick: function() {
+  startTime: 10000,
+  onTick: function() {
     $('#countdown1 .field1').text(countdown1.lap());
     $('#countdown1 .field2').text(countdown1.lap('{S}.{ll}'));
   },
-  on_complete: function() {
+  onComplete: function() {
     console.log("Countdown 1 complete!");
   }
 });
@@ -204,13 +204,13 @@ $('#countdown1 .btn-reset').on('click', function() {
             <textarea wrap="off" readonly="readonly">
 var countdown2 = new Tock({
   countdown: true,
-  start_time: 10000,
+  startTime: 10000,
   interval: 123,
-  on_tick: function() {
+  onTick: function() {
     $('#countdown2 .field1').text(countdown2.lap());
     $('#countdown2 .field2').text(countdown2.lap('{S}'));
   },
-  on_complete: function() {
+  onComplete: function() {
     console.log("Countdown 2 complete!");
   }
 });
@@ -244,7 +244,7 @@ $('#countdown2 .btn-reset').on('click', function() {
            * Timer 1
            */
           var timer1 = new Tock({
-            on_tick: function() {
+            onTick: function() {
               $('#timer1 .field1').text(timer1.lap());
               $('#timer1 .field2').text(timer1.lap('{S}.{ll}'));
             }
@@ -268,7 +268,7 @@ $('#countdown2 .btn-reset').on('click', function() {
            */
           var timer2 = new Tock({
             interval: 1000,
-            on_tick: function() {
+            onTick: function() {
               $('#timer2 .field1').text(timer2.lap());
               $('#timer2 .field2').text(timer2.lap('{S}'));
             }
@@ -291,8 +291,8 @@ $('#countdown2 .btn-reset').on('click', function() {
            * Timer 3
            */
           var timer3 = new Tock({
-            start_time: 15000,
-            on_tick: function() {
+            startTime: 15000,
+            onTick: function() {
               $('#timer3 .field1').text(timer3.lap());
               $('#timer3 .field2').text(timer3.lap('{S}.{ll}'));
             }
@@ -315,9 +315,9 @@ $('#countdown2 .btn-reset').on('click', function() {
            * Timer 4
            */
           var timer4 = new Tock({
-            start_time: 2138,
+            startTime: 2138,
             interval: 123,
-            on_tick: function() {
+            onTick: function() {
               $('#timer4 .field1').text(timer4.lap());
               $('#timer4 .field2').text(timer4.lap('{S}.{ll}'));
             }
@@ -341,12 +341,12 @@ $('#countdown2 .btn-reset').on('click', function() {
            */
           var countdown1 = new Tock({
             countdown: true,
-            start_time: 10000,
-            on_tick: function() {
+            startTime: 10000,
+            onTick: function() {
               $('#countdown1 .field1').text(countdown1.lap());
               $('#countdown1 .field2').text(countdown1.lap('{S}.{ll}'));
             },
-            on_complete: function() {
+            onComplete: function() {
               console.log("Countdown 1 complete!");
             }
           });
@@ -369,13 +369,13 @@ $('#countdown2 .btn-reset').on('click', function() {
            */
           var countdown2 = new Tock({
             countdown: true,
-            start_time: 10000,
+            startTime: 10000,
             interval: 123,
-            on_tick: function() {
+            onTick: function() {
               $('#countdown2 .field1').text(countdown2.lap());
               $('#countdown2 .field2').text(countdown2.lap('{S}'));
             },
-            on_complete: function() {
+            onComplete: function() {
               console.log("Countdown 2 complete!");
             }
           });
