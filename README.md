@@ -45,10 +45,10 @@ The `options` parameter allows to customize the timer easily. All of them are op
 ```js
 var options = {
   countdown: true,
-  start_time: 10000
+  startTime: 10000
   interval: 15,
-  on_tick: function() {/* Some code... */},
-  on_complete: function() {/* Some code... */}
+  onTick: function() {/* Some code... */},
+  onComplete: function() {/* Some code... */}
 }
 ```
 
@@ -57,16 +57,16 @@ var options = {
 * **countdown**: *boolean*
   * If true, the timer will count down. Otherwise, it will count up.
   * Default: false.
-* **start_time**: *integer*
+* **startTime**: *integer*
   * The starting time in milliseconds. This should be set to a number greater than 0 when `countdown` is true.
   * Default: 0.
 * **interval**: *integer*
   * The interval in milliseconds. This defines how often the timer will tick.
   * Default: 0.
-* **on_tick**: *function*
+* **onTick**: *function*
   * A callback function that will be called on every tick.
   * Default: A mockup function that will suggest to set a real one.
-* **on_complete**: *function*
+* **onComplete**: *function*
   * A callback function that will be called when a countdown reaches zero.
   * Default: A mockup function that will suggest to set a real one.
 
@@ -77,20 +77,20 @@ var options = {
 * **stop()**
   * Stops the timer. It is possible to resume the timer calling `start()` again.
 * **reset()**
-  * Resets the timer to `start_time`.
+  * Resets the timer to `startTime`.
 * **lap(format)**
   * Gets the current time in milliseconds.
   * The `format` parameter is optional, it is passed to the `format()` method.
 * **format(time, format)**
   * Returns a `time` (milliseconds) in the specified `format`. (See the [Time Format](#time-format) section)
 
-#### Callback functions: on_tick() and on_complete()
+#### Callback functions
 
-On every tick (every `interval` milliseconds), `on_tick()` will be called.
+On every tick (every `interval` milliseconds), `onTick()` will be called.
 ```js
 var options = {
   // some options...
-  on_tick: function() {
+  onTick: function() {
     // Pure javascript
     document.querySelector('#time').innerHTML = timer.lap();
 
@@ -100,11 +100,11 @@ var options = {
 }
 ```
 
-When a countdown timer reaches zero, `on_complete()` will be called.
+When a countdown timer reaches zero, `onComplete()` will be called.
 ```js
 var options = {
   // some options...
-  on_complete: function() {
+  onComplete: function() {
     alert("Countdown complete!");
   }
 }
