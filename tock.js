@@ -18,17 +18,17 @@ var Tock = function(options) {
   options = options || {};
 
   // Default params
-  this.is_countdown = options.countdown || false;
-  this.start_time = options.start_time || 0;
+  this.isCountdown = options.countdown || false;
+  this.startTime = options.startTime || 0;
   this.interval = options.interval || 10;
-  this.on_tick = options.on_tick || function() {console.warn('Callback function for "on_tick" is not defined.');};
-  this.on_complete = options.on_complete || function() {console.warn('Callback function for "on_complete" is not defined.');};
+  this.onTick = options.onTick || function() {console.warn('Callback function for "onTick" is not defined.');};
+  this.onComplete = options.onComplete || function() {console.warn('Callback function for "onComplete" is not defined.');};
 
-  this.is_running = false;
+  this.isRunning = false;
   this.timeout = null;
 
-  this.stopped_time = this.start_time;
-  this.started_at = 0;
+  this.stoppedTime = this.startTime;
+  this.startedAt = 0;
   this.time = 0;
   this.elapsed = '0.0';
 };
@@ -39,21 +39,21 @@ Tock.prototype = {
    */
   start: function() {
     // Don't try to start if it is already running
-    if (this.is_running) {
+    if (this.isRunning) {
       return;
     }
 
     // A countdown that has finished should be reseted before starting again
-    if (this.is_countdown && this.stopped_time <= 0) {
+    if (this.isCountdown && this.stoppedTime <= 0) {
       return;
     }
 
     var me = this;
 
-    this.started_at = Date.now();
+    this.startedAt = Date.now();
     this.time = 0;
     this.elapsed = '0.0';
-    this.is_running = true;
+    this.isRunning = true;
 
     this.timeout = window.setTimeout(
       function() {me.tick();},
@@ -66,18 +66,18 @@ Tock.prototype = {
    */
   stop: function() {
     // Don't try to stop if it is not running
-    if (!this.is_running) {
+    if (!this.isRunning) {
       return;
     }
 
     // Keep the lap time before stopping
-    this.stopped_time = this.lap();
-    this.is_running = false;
+    this.stoppedTime = this.lap();
+    this.isRunning = false;
 
     window.clearTimeout(this.timeout);
 
-    if (typeof this.on_tick === 'function') {
-      this.on_tick();
+    if (typeof this.onTick === 'function') {
+      this.onTick();
     }
   },
 
@@ -85,17 +85,17 @@ Tock.prototype = {
    * Resets the timer.
    */
   reset: function() {
-    this.is_running = false;
+    this.isRunning = false;
     window.clearTimeout(this.timeout);
     this.timeout = null;
 
-    this.stopped_time = this.start_time;
-    this.started_at = 0;
+    this.stoppedTime = this.startTime;
+    this.startedAt = 0;
     this.time = 0;
     this.elapsed = '0.0';
 
-    if (typeof this.on_tick === 'function') {
-      this.on_tick();
+    if (typeof this.onTick === 'function') {
+      this.onTick();
     }
   },
 
@@ -115,38 +115,38 @@ Tock.prototype = {
       this.elapsed += '.0';
     }
 
-    var diff = (Date.now() - this.started_at) - this.time;
+    var diff = (Date.now() - this.startedAt) - this.time;
 
-    var next_interval_in = this.interval - diff;
+    var nextIntervalIn = this.interval - diff;
 
-    if (typeof this.on_tick === 'function') {
-      this.on_tick();
+    if (typeof this.onTick === 'function') {
+      this.onTick();
     }
 
-    if (this.is_countdown && (this.stopped_time - this.time < 0)) {
-      this.stopped_time = 0;
-      this.is_running = false;
+    if (this.isCountdown && (this.stoppedTime - this.time < 0)) {
+      this.stoppedTime = 0;
+      this.isRunning = false;
 
-      if (typeof this.on_complete === 'function') {
-        this.on_complete();
+      if (typeof this.onComplete === 'function') {
+        this.onComplete();
       }
     }
 
-    if (next_interval_in <= 0) {
-      var missed_ticks = Math.floor(Math.abs(next_interval_in) / this.interval);
-      this.time += missed_ticks * this.interval;
+    if (nextIntervalIn <= 0) {
+      var missedTicks = Math.floor(Math.abs(nextIntervalIn) / this.interval);
+      this.time += missedTicks * this.interval;
 
-      if (this.is_running) {
+      if (this.isRunning) {
         this.tick();
       }
 
       return;
     }
 
-    if (this.is_running) {
+    if (this.isRunning) {
       this.timeout = window.setTimeout(
         function() {me.tick();},
-        next_interval_in
+        nextIntervalIn
       );
     }
   },
@@ -155,25 +155,25 @@ Tock.prototype = {
    * Gets the current time in the specified format (default is milliseconds).
    */
   lap: function(format) {
-    if (!this.is_running) {
+    if (!this.isRunning) {
       // Initial status
-      if (this.started_at === 0) {
-        return this.format(this.start_time, format);
+      if (this.startedAt === 0) {
+        return this.format(this.startTime, format);
       }
 
-      return this.format(this.stopped_time, format);
+      return this.format(this.stoppedTime, format);
     }
 
-    if (this.is_countdown) {
-      var lap_time = this.stopped_time - (Date.now() - this.started_at);
-      if (lap_time < 0) {
-        lap_time = 0;
+    if (this.isCountdown) {
+      var lapTime = this.stoppedTime - (Date.now() - this.startedAt);
+      if (lapTime < 0) {
+        lapTime = 0;
       }
 
-      return this.format(lap_time, format);
+      return this.format(lapTime, format);
     }
 
-    return this.format(this.stopped_time + (Date.now() - this.started_at), format);
+    return this.format(this.stoppedTime + (Date.now() - this.startedAt), format);
   },
 
   /**
