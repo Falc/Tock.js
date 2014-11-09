@@ -23,6 +23,7 @@
     "**/.*",
     "examples",
     "CHANGELOG.md",
-    "README.md"
+    "README.md",
+    "Gruntfile.js"
   ]
 }
