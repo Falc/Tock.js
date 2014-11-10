@@ -6,7 +6,17 @@ module.exports = function(grunt) {
         src: ['Gruntfile.js']
       },
       main: {
-        src: ['tock.js']
+        src: ['tock.js'],
+        options: {
+          'browser': true,
+          'camelcase': true,
+          'curly': true,
+          'eqeqeq': true,
+          'indent': 2,
+          'newcap': true,
+          'quotmark': 'single',
+          'unused': true
+        }
       },
     },
     uglify: {
