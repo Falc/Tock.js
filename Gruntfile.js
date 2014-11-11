@@ -11,10 +11,11 @@ module.exports = function(grunt) {
           'browser': true,
           'camelcase': true,
           'curly': true,
+          'devel': true,
           'eqeqeq': true,
-          'indent': 2,
           'newcap': true,
           'quotmark': 'single',
+          'undef': true,
           'unused': true
         }
       },
