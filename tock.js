@@ -109,7 +109,7 @@ Tock.prototype = {
 
     this.time += this.interval;
 
-    this.elapsed = Math.floor(this.time / this.interval ) / 10;
+    this.elapsed = Math.floor(this.time / this.interval) / 10;
 
     if (Math.round(this.elapsed) === this.elapsed) {
       this.elapsed += '.0';
@@ -234,7 +234,7 @@ Tock.prototype = {
     info.h = info.H;
     info.hh = info.h;
 
-    var letters = ['HH','H','hh','h','MM','M','mm','m','SS','S','ss','s','LL','L','ll','l'];
+    var letters = ['HH', 'H', 'hh', 'h', 'MM', 'M', 'mm', 'm', 'SS', 'S', 'ss', 's', 'LL', 'L', 'll', 'l'];
 
     for (var i = letters.length - 1; i >= 0; i--) {
       formatted = formatted.replace(new RegExp('{' + letters[i] + '}', 'g'), info[letters[i]]);
