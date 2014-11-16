@@ -14,6 +14,10 @@
  * Version: 2.0.0-dev
  * License: MIT (https://github.com/Falc/Tock.js/blob/master/LICENSE)
  */
+
+// Date.now polyfill for IE<9
+Date.now = Date.now || function() {return +new Date();};
+
 var Tock = function(options) {
   options = options || {};
 
