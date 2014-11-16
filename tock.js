@@ -18,30 +18,33 @@
 // Date.now polyfill for IE<9
 Date.now = Date.now || function() {return +new Date();};
 
-var Tock = function(options) {
-  options = options || {};
-
-  // Default params
-  this.isCountdown = options.countdown || false;
-  this.startTime = options.startTime || 0;
-  this.interval = options.interval || 10;
-  this.onTick = options.onTick || function() {console.warn('Callback function for "onTick" is not defined.');};
-  this.onComplete = options.onComplete || function() {console.warn('Callback function for "onComplete" is not defined.');};
-
-  this.isRunning = false;
-  this.timeout = null;
-
-  this.stoppedTime = this.startTime;
-  this.startedAt = 0;
-  this.time = 0;
-  this.elapsed = '0.0';
-};
-
-Tock.prototype = {
+var Tock = (function() {
   /**
-   * Starts the timer.
+   * Constructor.
    */
-  start: function() {
+  function Tock(options) {
+    options = options || {};
+
+    // Default params
+    this.isCountdown = options.countdown || false;
+    this.startTime = options.startTime || 0;
+    this.interval = options.interval || 10;
+    this.onTick = options.onTick || function() {console.warn('Callback function for "onTick" is not defined.');};
+    this.onComplete = options.onComplete || function() {console.warn('Callback function for "onComplete" is not defined.');};
+
+    this.isRunning = false;
+    this.timeout = null;
+
+    this.stoppedTime = this.startTime;
+    this.startedAt = 0;
+    this.time = 0;
+    this.elapsed = '0.0';
+  }
+
+  /**
+  * Starts the timer.
+  */
+  Tock.prototype.start = function() {
     // Don't try to start if it is already running
     if (this.isRunning) {
       return;
@@ -63,12 +66,12 @@ Tock.prototype = {
       function() {me.tick();},
       this.interval
     );
-  },
+  };
 
   /**
    * Stops the timer.
    */
-  stop: function() {
+  Tock.prototype.stop = function() {
     // Don't try to stop if it is not running
     if (!this.isRunning) {
       return;
@@ -83,12 +86,12 @@ Tock.prototype = {
     if (typeof this.onTick === 'function') {
       this.onTick();
     }
-  },
+  };
 
   /**
    * Resets the timer.
    */
-  reset: function() {
+  Tock.prototype.reset = function() {
     this.isRunning = false;
     window.clearTimeout(this.timeout);
     this.timeout = null;
@@ -101,14 +104,14 @@ Tock.prototype = {
     if (typeof this.onTick === 'function') {
       this.onTick();
     }
-  },
+  };
 
   /**
    * Tick.
    *
    * Called every "this.interval" seconds.
    */
-  tick: function() {
+  Tock.prototype.tick = function() {
     var me = this;
 
     this.time += this.interval;
@@ -153,12 +156,12 @@ Tock.prototype = {
         nextIntervalIn
       );
     }
-  },
+  };
 
   /**
    * Gets the current time in the specified format (default is milliseconds).
    */
-  lap: function(format) {
+  Tock.prototype.lap = function(format) {
     if (!this.isRunning) {
       // Initial status
       if (this.startedAt === 0) {
@@ -178,7 +181,7 @@ Tock.prototype = {
     }
 
     return this.format(this.stoppedTime + (Date.now() - this.startedAt), format);
-  },
+  };
 
   /**
    * Returns a time (in milliseconds) formatted as specified.
@@ -203,14 +206,15 @@ Tock.prototype = {
    * '{MM} min and {ss} s'        => 64 min and 37 s
    * '{h}:{m} vs {hh}:{mm}'       => 1:4 vs 01:04
    */
-  format: function(time, format) {
+  Tock.prototype.format = function(time, format) {
     if (format === undefined || format === '{L}') {
       return time;
     }
 
-    var formatted = format,
-        info = {},
-        x = time;
+    var formatted = format;
+
+    var info = {};
+    var x = time;
 
     var milliseconds = x % 1000;
     info.L = x.toString();
@@ -245,5 +249,7 @@ Tock.prototype = {
     }
 
     return formatted;
-  }
-};
+  };
+
+  return Tock;
+}());
