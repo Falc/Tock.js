@@ -19,53 +19,55 @@ module.exports = function(grunt) {
           'undef': true,
           'unused': true
         }
-      },
+      }
     },
     jscs: {
-      src: '<%= jshint.main.src %>',
-      options: {
-        'disallowSpacesInNamedFunctionExpression': {
-          'beforeOpeningRoundBrace': true
-        },
-        'disallowSpacesInFunctionExpression': {
-          'beforeOpeningRoundBrace': true
-        },
-        'disallowSpacesInAnonymousFunctionExpression': {
-          'beforeOpeningRoundBrace': true
-        },
-        'disallowSpacesInFunctionDeclaration': {
-          'beforeOpeningRoundBrace': true
-        },
-        'disallowSpaceBeforeBinaryOperators': [
-          ','
-        ],
-        'requireSpaceBeforeBinaryOperators': true,
-        'requireSpaceAfterBinaryOperators': true,
-        'requireCamelCaseOrUpperCaseIdentifiers': true,
-        'requireCapitalizedConstructors': true,
-        'disallowMixedSpacesAndTabs': true,
-        'disallowTrailingWhitespace': true,
-        'disallowTrailingComma': true,
-        'disallowSpaceAfterPrefixUnaryOperators': true,
-        'disallowSpaceBeforePostfixUnaryOperators': true,
-        'disallowSpacesInsideArrayBrackets': true,
-        'disallowSpacesInsideParentheses': true,
-        'requireSpaceAfterKeywords': [
-          'if',
-          'else',
-          'for',
-          'while',
-          'do',
-          'switch',
-          'case',
-          'return',
-          'try',
-          'catch',
-          'typeof'
-        ],
-        'validateIndentation': 2,
-        'validateLineBreaks': 'LF',
-        'validateQuoteMarks': "'"
+      main: {
+        src: '<%= jshint.main.src %>',
+        options: {
+          'disallowSpacesInNamedFunctionExpression': {
+            'beforeOpeningRoundBrace': true
+          },
+          'disallowSpacesInFunctionExpression': {
+            'beforeOpeningRoundBrace': true
+          },
+          'disallowSpacesInAnonymousFunctionExpression': {
+            'beforeOpeningRoundBrace': true
+          },
+          'disallowSpacesInFunctionDeclaration': {
+            'beforeOpeningRoundBrace': true
+          },
+          'disallowSpaceBeforeBinaryOperators': [
+            ','
+          ],
+          'requireSpaceBeforeBinaryOperators': true,
+          'requireSpaceAfterBinaryOperators': true,
+          'requireCamelCaseOrUpperCaseIdentifiers': true,
+          'requireCapitalizedConstructors': true,
+          'disallowMixedSpacesAndTabs': true,
+          'disallowTrailingWhitespace': true,
+          'disallowTrailingComma': true,
+          'disallowSpaceAfterPrefixUnaryOperators': true,
+          'disallowSpaceBeforePostfixUnaryOperators': true,
+          'disallowSpacesInsideArrayBrackets': true,
+          'disallowSpacesInsideParentheses': true,
+          'requireSpaceAfterKeywords': [
+            'if',
+            'else',
+            'for',
+            'while',
+            'do',
+            'switch',
+            'case',
+            'return',
+            'try',
+            'catch',
+            'typeof'
+          ],
+          'validateIndentation': 2,
+          'validateLineBreaks': 'LF',
+          'validateQuoteMarks': "'"
+        }
       }
     },
     uglify: {
@@ -80,7 +82,7 @@ module.exports = function(grunt) {
     watch: {
       main: {
         files: '<%= jshint.main.src %>',
-        tasks: ['jshint:main', 'uglify:main']
+        tasks: ['jshint:main', 'jscs:main', 'uglify:main']
       }
     }
   });
