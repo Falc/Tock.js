@@ -13,6 +13,7 @@ module.exports = function(grunt) {
           'curly': true,
           'devel': true,
           'eqeqeq': true,
+          'exported': ['Tock'],
           'newcap': true,
           'quotmark': 'single',
           'undef': true,
