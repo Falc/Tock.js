@@ -13,7 +13,8 @@ License: [MIT](https://github.com/Falc/Tock.js/blob/master/LICENSE)
 * Count-up/countdown.
 * Custom intervals and starting times.
 * Start, stop, resume and reset.
-* Callback functions on every tick and when a countdown reaches zero.
+* Callbacks: onTick(), onComplete(), onStart(), onStop() and onReset().
+* Flexible time formatting.
 
 ## The problem with setInterval/setTimeout
 
@@ -48,7 +49,10 @@ var options = {
   startTime: 10000
   interval: 15,
   onTick: function() {/* Some code... */},
-  onComplete: function() {/* Some code... */}
+  onComplete: function() {/* Some code... */},
+  onStart: function() {/* Some code... */},
+  onStop: function() {/* Some code... */},
+  onReset: function() {/* Some code... */}
 }
 ```
 
@@ -64,11 +68,20 @@ var options = {
   * The interval in milliseconds. This defines how often the timer will tick.
   * Default: 0.
 * **onTick**: *function*
-  * A callback function that will be called on every tick.
+  * A function that will be called on every tick.
   * Default: A mockup function that will suggest to set a real one.
 * **onComplete**: *function*
-  * A callback function that will be called when a countdown reaches zero.
+  * A function that will be called when a countdown reaches zero.
   * Default: A mockup function that will suggest to set a real one.
+* **onStart**: *function*
+  * A function that will be called when a timer is started.
+  * Default: Dummy function.
+* **onStop**: *function*
+  * A function that will be called when a timer is stopped.
+  * Default: Dummy function.
+* **onReset**: *function*
+  * A function that will be called when a timer is reset.
+  * Default: Dummy function.
 
 #### Methods
 
@@ -84,7 +97,7 @@ var options = {
 * **format(time, format)**
   * Returns a `time` (milliseconds) in the specified `format`. (See the [Time Format](#time-format) section)
 
-#### Callback functions
+#### Callbacks
 
 On every tick (every `interval` milliseconds), `onTick()` will be called.
 ```js
@@ -106,6 +119,35 @@ var options = {
   // some options...
   onComplete: function() {
     alert("Countdown complete!");
+  }
+}
+```
+
+When a timer starts, `onStart()` will be called.
+```js
+var options = {
+  // some options...
+  onStart: function() {
+    console.log("Start!");
+  }
+}
+```
+When a timer stop, `onStop()` will be called.
+```js
+var options = {
+  // some options...
+  onStop: function() {
+    console.log("Stop!");
+  }
+}
+```
+
+When a timer is reset, `onReset()` will be called.
+```js
+var options = {
+  // some options...
+  onReset: function() {
+    console.log("Reset!");
   }
 }
 ```
