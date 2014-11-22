@@ -31,6 +31,9 @@ var Tock = (function() {
     this.interval = options.interval || 10;
     this.onTick = options.onTick || function() {console.warn('Callback function for "onTick" is not defined.');};
     this.onComplete = options.onComplete || function() {console.warn('Callback function for "onComplete" is not defined.');};
+    this.onStart = options.onStart || function() {};
+    this.onStop = options.onStop || function() {};
+    this.onReset = options.onReset || function() {};
 
     this.isRunning = false;
     this.timeout = null;
@@ -66,6 +69,10 @@ var Tock = (function() {
       function() {me.tick();},
       this.interval
     );
+
+    if (typeof this.onStart === 'function') {
+      this.onStart();
+    }
   };
 
   /**
@@ -86,6 +93,10 @@ var Tock = (function() {
     if (typeof this.onTick === 'function') {
       this.onTick();
     }
+
+    if (typeof this.onStop === 'function') {
+      this.onStop();
+    }
   };
 
   /**
@@ -103,6 +114,10 @@ var Tock = (function() {
 
     if (typeof this.onTick === 'function') {
       this.onTick();
+    }
+
+    if (typeof this.onReset === 'function') {
+      this.onReset();
     }
   };
 
