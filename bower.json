@@ -11,7 +11,9 @@
     "tock.js"
   ],
   "moduleType": [
-    "globals"
+    "amd",
+    "globals",
+    "node"
   ],
   "keywords": [
     "timer",
