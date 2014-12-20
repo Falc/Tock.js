@@ -11,7 +11,7 @@
  * - Aitor García (aitor.falc@gmail.com)
  * - Roberto Salicio
  *
- * Version: 2.0.0
+ * Version: 2.1.0-dev
  * License: MIT (https://github.com/Falc/Tock.js/blob/master/LICENSE)
  */
 
