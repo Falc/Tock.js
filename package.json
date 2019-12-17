@@ -4,6 +4,7 @@
   "version": "2.1.0",
   "main": "src/tock.js",
   "author": "Aitor García <aitor.falc@gmail.com>",
+  "homepage": "https://github.com/Falc/Tock.js",
   "license": "MIT",
   "devDependencies": {
     "grunt":                "~1.0.0",
