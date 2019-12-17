@@ -1,5 +1,5 @@
 {
-  "name": "Tock.js",
+  "name": "tock.js",
   "description": "A nice and accurate Javascript count-up/countdown timer.",
   "version": "2.1.0",
   "main": "src/tock.js",

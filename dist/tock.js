@@ -1,7 +1,7 @@
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module unless amdModuleId is set
-    define('Tock.js', [], function () {
+    define('tock.js', [], function () {
       return (root['Tock.js'] = factory());
     });
   } else if (typeof module === 'object' && module.exports) {
