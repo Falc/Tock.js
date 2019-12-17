@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.0 (2019-12-17)
+
+* Adapt to UMD.
+* Organize files.
+* Replace bower.json with package.json.
+
 ## 2.0.0 (2014-11-22)
 
  * Add new callbacks: onStart(), onStop() and onReset().
