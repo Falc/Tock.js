@@ -11,27 +11,14 @@
  * - Aitor García (aitor.falc@gmail.com)
  * - Roberto Salicio
  *
- * Version: 2.1.0-dev
+ * Version: 2.1.0
  * License: MIT (https://github.com/Falc/Tock.js/blob/master/LICENSE)
  */
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define('Tock', [], function() {
-      return (root.returnExportsGlobal = factory());
-    });
-  } else if (typeof exports === 'object') {
-    // Node. Does not work with strict CommonJS, but only CommonJS-like enviroments
-    // that support module.exports, like Node.
-    module.exports = factory();
-  } else {
-    // Browser globals
-    root.Tock = factory();
-  }
-}(this, function() {
-  // Date.now polyfill for IE<9
-  Date.now = Date.now || function() {return +new Date();};
 
+// Date.now polyfill for IE<9
+Date.now = Date.now || function() {return +new Date();};
+
+var Tock = (function() { // jshint ignore:line
   /**
    * Constructor.
    */
@@ -280,4 +267,4 @@
   };
 
   return Tock;
-}));
+}());
