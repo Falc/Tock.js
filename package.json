@@ -1,0 +1,16 @@
+{
+  "name": "Tock.js",
+  "description": "A nice and accurate Javascript count-up/countdown timer.",
+  "version": "2.1.0",
+  "main": "src/tock.js",
+  "author": "Aitor García <aitor.falc@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt":                "~1.0.0",
+    "grunt-contrib-jshint": "~1.0.0",
+    "grunt-contrib-uglify": "~1.0.0",
+    "grunt-contrib-watch":  "~1.0.0",
+    "grunt-jscs":           "~3.0",
+    "grunt-umd":            "~2.4.0"
+  }
+}
