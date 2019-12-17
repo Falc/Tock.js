@@ -2,54 +2,49 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('bower.json'),
     app: {
-      name: 'Tock.js',
-      version: '<%= pkg.version %>',
-      license: '<%= pkg.license %>',
+      name:     'Tock.js',
+      version:  '<%= pkg.version %>',
+      license:  '<%= pkg.license %>',
       homepage: '<%= pkg.homepage %>',
+      paths: {
+        src:  'src',
+        dist: 'dist'
+      },
       files: {
         gruntfile: ['Gruntfile.js'],
-        js: ['tock.js']
-      },
-      targets: {
-        gruntfile: [{
-          src: '<%= app.files.gruntfile %>'
-        }],
-        main: [{
-          expand: true,
-          src: '<%= app.files.js %>',
-          ext: '.min.js',
-          extDot: 'last'
-        }]
+        js:        ['tock.js']
       }
     },
     jshint: {
       options: {
-        'camelcase': true,
-        'curly': true,
-        'eqeqeq': true,
-        'newcap': true,
-        'undef': true,
-        'unused': true
+        camelcase:  true,
+        curly:      true,
+        eqeqeq:     true,
+        jquery:     true,
+        newcap:     true,
+        undef:      true,
+        unused:     true,
+        validthis:  true
       },
       gruntfile: {
-        files: '<%= app.targets.gruntfile %>',
         options: {
-          'predef': [
+          predef: [
             'module'
           ]
-        }
+        },
+        src: '<%= app.files.gruntfile %>'
       },
-      main: {
-        files: '<%= app.targets.main %>',
+      js: {
         options: {
-          'browser': true,
-          'devel': true,
-          'predef': [
+          browser: true,
+          devel:   true,
+          predef:  [
             'define',
             'module',
             'require'
           ]
-        }
+        },
+        src: '<%= app.paths.src %>/<%= app.files.js %>'
       }
     },
     jscs: {
@@ -98,10 +93,23 @@ module.exports = function(grunt) {
         'validateQuoteMarks': true
       },
       gruntfile: {
-        files: '<%= app.targets.gruntfile %>'
+        options: {
+          'requireCamelCaseOrUpperCaseIdentifiers': 'ignoreProperties'
+        },
+        src: '<%= app.files.gruntfile %>'
       },
-      main: {
-        files: '<%= app.targets.main %>'
+      js: {
+        src: '<%= app.paths.src %>/<%= app.files.js %>'
+      }
+    },
+    umd: {
+      js: {
+        src:            '<%= app.paths.src %>/<%= app.files.js %>',
+        dest:           '<%= app.paths.dist %>/<%= app.files.js %>',
+        amdModuleId:    '<%= pkg.name %>',  // AMD
+        objectToExport: '<%= app.name %>',  // CommonJS
+        globalAlias:    '<%= app.name %>',  // Global
+        deps:           {}
       }
     },
     uglify: {
@@ -111,8 +119,12 @@ module.exports = function(grunt) {
           comparisons: false
         }
       },
-      main: {
-        files: '<%= app.targets.main %>'
+      js: {
+        files: [{
+          src:    '<%= umd.js.dest %>',
+          ext:    '.min.js',
+          expand: true
+        }]
       }
     },
     watch: {
@@ -120,24 +132,29 @@ module.exports = function(grunt) {
         files: '<%= app.files.gruntfile %>',
         tasks: ['check:gruntfile', 'build']
       },
-      main: {
+      js: {
+        options: {
+          cwd: '<%= app.paths.src %>'
+        },
         files: '<%= app.files.js %>',
-        tasks: ['build:main']
+        tasks: ['build:js']
       }
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-jscs');
+  grunt.loadNpmTasks('grunt-notify');
+  grunt.loadNpmTasks('grunt-umd');
 
   grunt.registerTask('check:gruntfile', ['jshint:gruntfile', 'jscs:gruntfile']);
-  grunt.registerTask('check:main', ['jshint:main', 'jscs:main']);
-  grunt.registerTask('check', ['check:gruntfile', 'check:main']);
+  grunt.registerTask('check:js', ['jshint:js', 'jscs:js']);
+  grunt.registerTask('check', ['check:gruntfile', 'check:js']);
 
-  grunt.registerTask('build:main', ['check:main', 'uglify:main']);
-  grunt.registerTask('build', ['build:main']);
+  grunt.registerTask('build:js', ['check:js', 'umd:js', 'uglify:js']);
+  grunt.registerTask('build', ['build:js']);
 
   grunt.registerTask('default', ['check:gruntfile', 'build']);
 };
